@@ -1,0 +1,9 @@
+{
+  "name": "spawn-command",
+  "author": "Maciej Małecki <me@mmalecki.com>",
+  "version": "0.0.0",
+  "main": "./lib/spawn-command",
+  "scripts": {
+    "test": "node test/spawn-command-test.js"
+  }
+}
