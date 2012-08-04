@@ -6,5 +6,8 @@
   "main": "./lib/spawn-command",
   "scripts": {
     "test": "node test/spawn-command-test.js"
+  },
+  "devDependencies": {
+    "assert-called": "0.0.x"
   }
 }
