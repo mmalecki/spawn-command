@@ -10,7 +10,7 @@ Spawn commands like `child_process.exec` does but return a `ChildProcess`.
 var spawnCommand = require('spawn-command'),
     child = spawnCommand('echo "Hello spawn" | base64');
 
-child.on('stdout', function (data) {
+child.stdout.on('data', function (data) {
   console.log('data', data);
 });
 
