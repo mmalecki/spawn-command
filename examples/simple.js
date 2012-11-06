@@ -1,5 +1,6 @@
-var spawnCommand = require('../');
-    child = spawnCommand('echo "Hello spawn" | base64');
+var spawnCommand = require('../'),
+    command = (process.platform === 'win32') ? 'echo Hello spawn' : 'echo "Hello spawn" | base64',
+    child = spawnCommand(command);
 
 child.stdout.on('data', function (data) {
   console.log('data', data.toString());
