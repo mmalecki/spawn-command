@@ -8,6 +8,6 @@
     "test": "node test/spawn-command-test.js"
   },
   "devDependencies": {
-    "assert-called": "0.0.x"
+    "assert-called": "0.1.x"
   }
 }
