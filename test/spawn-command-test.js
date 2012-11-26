@@ -3,24 +3,29 @@ var path = require('path'),
     assertCalled = require('assert-called'),
     spawnCommand = require('../');
 
-var win32 = (process.platform === 'win32'),
-    newln = win32 ? '\r\n' : '\n',
-    grep = win32 ? 'findstr' : 'grep',
-    child = spawnCommand(grep + ' commit < ' + path.join(__dirname, 'fixtures', 'commit')),
-    stderr = '',
-    stdout = '',
-    exited = false;
+var grep = (process.platform === 'win32') ? 'findstr' : 'grep';
+var fixture = path.join(__dirname, 'fixtures', 'commit');
 
-child.stdout.on('data', function (chunk) {
-  stdout += chunk;
-});
+test(grep + ' commit < ' + fixture);  // test string (concatenated) command
+test([grep, 'commit', '<', fixture]); // test array command
 
-child.stderr.on('data', function (chunk) {
-  stderr += chunk;
-});
+function test(command) {
+  var child = spawnCommand(command),
+      stderr = '',
+      stdout = '',
+      exited = false;
 
-child.on('exit', assertCalled(function (exitCode) {
-  assert.equal(exitCode, 0);
-  assert.equal(stdout, 'commit 26b11915b1c16440468a4b5f4b07d2409b98c68c' + newln);
-  assert.equal(stderr, '');
-}));
+  child.stdout.on('data', function(chunk) {
+    stdout += chunk;
+  });
+
+  child.stderr.on('data', function(chunk) {
+    stderr += chunk;
+  });
+
+  child.on('exit', assertCalled(function(exitCode) {
+    assert.equal(exitCode, 0);
+    assert.equal(stdout, 'commit 26b11915b1c16440468a4b5f4b07d2409b98c68c\n');
+    assert.equal(stderr, '');
+  }));
+}
