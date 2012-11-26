@@ -6,10 +6,11 @@ var path = require('path'),
 var grep = (process.platform === 'win32') ? 'findstr' : 'grep';
 var fixture = path.join(__dirname, 'fixtures', 'commit');
 
-test(grep + ' commit < ' + fixture);  // test string (concatenated) command
-test([grep, 'commit', '<', fixture]); // test array command
+test(grep + ' commit < ' + fixture, function() { // test string command
+  test([grep, 'commit', '<', fixture]); // test array command
+});
 
-function test(command) {
+function test(command, next) {
   var child = spawnCommand(command),
       stderr = '',
       stdout = '',
@@ -27,5 +28,7 @@ function test(command) {
     assert.equal(exitCode, 0);
     assert.equal(stdout, 'commit 26b11915b1c16440468a4b5f4b07d2409b98c68c\n');
     assert.equal(stderr, '');
+
+    if (next) next();
   }));
 }
