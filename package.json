@@ -9,5 +9,6 @@
   },
   "devDependencies": {
     "assert-called": "0.1.x"
-  }
+  },
+  "license": "MIT"
 }
