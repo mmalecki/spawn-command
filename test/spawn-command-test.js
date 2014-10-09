@@ -19,7 +19,7 @@ child.stderr.on('data', function (chunk) {
   stderr += chunk;
 });
 
-child.on('exit', assertCalled(function (exitCode) {
+child.on('close', assertCalled(function (exitCode) {
   assert.equal(exitCode, 0);
   assert.equal(stdout, 'commit 26b11915b1c16440468a4b5f4b07d2409b98c68c' + newln);
   assert.equal(stderr, '');
