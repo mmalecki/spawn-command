@@ -2,7 +2,7 @@
   "name": "spawn-command",
   "author": "Maciej Małecki <me@mmalecki.com>",
   "description": "Spawn commands like `child_process.exec` does but return a `ChildProcess`",
-  "version": "0.0.2-1",
+  "version": "0.0.3",
   "main": "./lib/spawn-command",
   "repository": {
     "type": "git",
