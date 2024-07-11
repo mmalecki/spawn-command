@@ -1,4 +1,4 @@
-# spawn-command [![Build Status](https://secure.travis-ci.org/mmalecki/spawn-command.png)](http://travis-ci.org/mmalecki/spawn-command)
+# spawn-command
 Spawn commands like `child_process.exec` does but return a `ChildProcess`.
 
 ## Installation
